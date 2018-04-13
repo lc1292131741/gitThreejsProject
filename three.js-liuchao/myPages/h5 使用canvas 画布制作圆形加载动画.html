@@ -1,0 +1,33 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>canvas 画布制作圆形加载动画</title>  
+</head>  
+<body>  
+<canvas id="mycanvas" style="height: 500px; width:500px;" width="500" height="500"></canvas>  
+</body> 
+<script type="text/javascript">
+	var canvas = document.getElementById( 'mycanvas' );
+	
+	var ctx = canvas.getContext( '2d' );
+	var index = 0;
+	
+	function draw() {
+		index++;
+		if ( index > 360 ) {
+			index = 0;
+		}
+		ctx.clearRect( 0,0,canvas.width,canvas.height );
+		ctx.beginPath();
+		ctx.arc( 250,250,200,Math.PI/180 * 270, Math.PI/180 * ( index+270 ) );
+		ctx.strokeStyle = 'green';
+		ctx.lineWidth = 100;
+		ctx.stroke();
+	}
+	setInterval( function () {
+		draw()
+	} ,1000/360 )
+	
+</script>
+</html> 
